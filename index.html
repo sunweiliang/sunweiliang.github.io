@@ -248,7 +248,7 @@
               
                 
                 <a class="post-title-link" href="/2016/08/11/first/" itemprop="url">
-                  欢迎来到我的博客
+                  iOS Protocol Buffers 编译及使用
                 </a>
               
             
@@ -283,7 +283,7 @@
 
           
           
-             <span id="/2016/08/11/first/" class="leancloud_visitors" data-flag-title="欢迎来到我的博客">
+             <span id="/2016/08/11/first/" class="leancloud_visitors" data-flag-title="iOS Protocol Buffers 编译及使用">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -307,7 +307,69 @@
       
         
           
-            <p>我的github : <a href="https://github.com/sunweiliang" target="_blank" rel="external">https://github.com/sunweiliang</a></p>
+            <p><strong>1.什么是protocol buffer</strong></p>
+<blockquote>
+<p>protocol buffer是google的一个开源项目,它是用于结构化数据串行化的灵活、高效、自动的方法。跟JSON，XML属于一个性质。</p>
+</blockquote>
+<p><strong>2.Mac搭建protocol编译环境</strong></p>
+<p>查看是否已经安装(终端Termal输入命令)</p>
+<blockquote>
+<p>brew -v</p>
+</blockquote>
+<p>如果没有安装,提示 command not found</p>
+<blockquote>
+<p>ruby -e “$(curl -fsSL <a href="https://raw.githubusercontent.com/Homebrew/install/master/install" target="_blank" rel="external">https://raw.githubusercontent.com/Homebrew/install/master/install</a>)”</p>
+</blockquote>
+<p>在Mac中打开Termal输入命令：</p>
+<blockquote>
+<p>ruby -e “$(curl -fsSL [<a href="https://raw.githubusercontent.com/Homebrew/install/master/install" target="_blank" rel="external">https://raw.githubusercontent.com/Homebrew/install/master/install</a>]”</p>
+</blockquote>
+<p>安装必要工具</p>
+<blockquote>
+<p>brew install automake<br>brew install libtool<br>brew install protobuf</p>
+</blockquote>
+<p>链接Protobuf编译器 （可选）</p>
+<blockquote>
+<p>ln -s /usr/local/Cellar/protobuf/2.6.1/bin/protoc /usr/local/bin</p>
+</blockquote>
+<p>切换到自己的某个目录下，用来存放下载的protobuf编译工具,例如(请确保/Users/air/Documents/jack/protobuf目录存在)：</p>
+<blockquote>
+<p>cd /Users/air/Documents/jack/protobuf</p>
+</blockquote>
+<p>下载</p>
+<blockquote>
+<p>git clone <a href="https://github.com/alexeyxo/protobuf-objc.git" target="_blank" rel="external">https://github.com/alexeyxo/protobuf-objc.git</a></p>
+</blockquote>
+<p>cd到目录</p>
+<blockquote>
+<p>cd protobuf-objc</p>
+</blockquote>
+<p>安装编译环境</p>
+<blockquote>
+<p>./scripts/build.sh</p>
+</blockquote>
+<p>编译 .proto 文件 , 在/Users/air/Documents/jack/protobuf/protobuf-objc目录中新建目录 aa ，把需要编译的.proto文件放进去-  xxx.proto</p>
+<blockquote>
+<p>protoc -I=/Users/air/Documents/jack/protobuf/protobuf-objc/aa –objc_out=/Users/air/Documents/jack/protobuf/protobuf-objc/aa /Users/air/Documents/jack/protobuf/protobuf-objc/aa/xxx.proto</p>
+</blockquote>
+<p>目录说明：</p>
+<ul>
+<li>/Users/air/Documents/jack/protobuf/protobuf-objc/aa<br>.proto文件存放目录</li>
+<li>/Users/air/Documents/jack/protobuf/protobuf-objc/aa<br>文件输出目录</li>
+<li>/Users/air/Documents/jack/protobuf/protobuf-objc/aa/xxx.proto<br>需要编译的文件目录</li>
+<li>–objc_out 编译成object-c,java版本可以换成java_out</li>
+</ul>
+<p>/Users/air/Documents/jack/protobuf/protobuf-objc/aa 目录会输出编译的类</p>
+<p> <strong>3.使用</strong></p>
+<p>将解析好的oc文件copy进工程里面<br>此时会Build Failed ‘ProtocolBuffers/ProtocolBuffers.h’ file not found 说这个文件没找到<br>此时需要使用cocoapods来集成一个三方库ProtocolBuffers</p>
+<blockquote>
+<p>source ‘<a href="https://github.com/CocoaPods/Specs.git" target="_blank" rel="external">https://github.com/CocoaPods/Specs.git</a>‘</p>
+<p>platform :ios, ‘7.0’<br>inhibit_all_warnings!</p>
+<p>target ‘TestPB’ do<br>pod ‘ProtocolBuffers’<br>end</p>
+</blockquote>
+<p>然后pod install</p>
+<p>xxx.proto 文件中有具体的描述方法</p>
+<p>附: <a href="https://github.com/showmylym/UseGoogleProtoBufDemo" target="_blank" rel="external">Google ProtoBuf使用演示Demo</a></p>
 
           
         
