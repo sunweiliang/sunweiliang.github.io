@@ -108,7 +108,7 @@ protocol buffer是google的一个开源项目,它是用于结构化数据串行�
 brew -v
 
 如果没有安装,提示 command not found，在Mac中打开Termal输入命令,安装brew">
-<meta property="og:updated_time" content="2016-08-13T03:39:42.000Z">
+<meta property="og:updated_time" content="2016-08-13T03:44:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS Protocol Buffers 编译及使用">
 <meta name="twitter:description" content="1.什么是protocol buffer
@@ -365,7 +365,10 @@ brew -v
 <blockquote>
 <p>./scripts/build.sh</p>
 </blockquote>
-<p>编译 .proto 文件 , 在/Users/air/Documents/jack/protobuf/protobuf-objc目录中新建目录 aa ，把需要编译的.proto文件放进去-  xxx.proto<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">protoc -I=/Users/air/Documents/jack/protobuf/protobuf-objc/aa --objc_out=/Users/air/Documents/jack/protobuf/protobuf-objc/aa /Users/air/Documents/jack/protobuf/protobuf-objc/aa/xxx.proto</div></pre></td></tr></table></figure></p>
+<p>编译 .proto 文件 , 在/Users/air/Documents/jack/protobuf/protobuf-objc目录中新建目录 aa ，把需要编译的.proto文件放进去-  xxx.proto</p>
+<blockquote>
+<p>protoc -I=/Users/air/Documents/jack/protobuf/protobuf-objc/aa –objc_out=/Users/air/Documents/jack/protobuf/protobuf-objc/aa /Users/air/Documents/jack/protobuf/protobuf-objc/aa/xxx.proto</p>
+</blockquote>
 <p>命令说明：</p>
 <ul>
 <li>/Users/air/Documents/jack/protobuf/protobuf-objc/aa<br>.proto文件存放目录</li>
